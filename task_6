@@ -1,0 +1,34 @@
+// Найти произведение пар чисел в одномерном массиве. Парой считаем первый и последний элемент, второй и предпоследний и т.д.
+void FillArray(int[] array, int min, int max)
+{
+    Random random = new Random();
+    for (int i = 0; i < array.Length; i++)
+    {
+        array[i] = random.Next(min, max);
+    }
+}
+void PrintArray(int[] array)
+{
+    foreach (var element in array)
+    {
+        Console.Write($"{element} ");
+    }
+}
+Console.Write("Enter min for array:");
+int Min = int.Parse(Console.ReadLine() ?? "0");
+Console.Write("Enter max for array:");
+int Max = int.Parse(Console.ReadLine() ?? "0");
+Console.Write("Enter length of array:");
+int length = int.Parse(Console.ReadLine() ?? "0");
+int[] Array = new int[length];
+FillArray(max: Max + 1, min: Min, array: Array);
+PrintArray(Array);
+Console.WriteLine(" ");
+for (int i = 0; i <= Array.Length / 2; i++)
+{
+    if (((Array.Length % 2) == 1) && (i == Array.Length / 2)) 
+    {        
+        Console.WriteLine($"Product of pair: {Array[i] * Array[Array.Length -1 -i]}");
+    }
+    
+}
