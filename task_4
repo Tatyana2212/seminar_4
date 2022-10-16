@@ -1,0 +1,34 @@
+// В одномерном массиве из 123 чисел найти количество элементов из отрезка [10,99]
+void FillArray(int[] array, int min, int max)
+{
+    Random random = new Random();
+    for (int i = 0; i < array.Length; i++)
+    {
+        array[i] = random.Next(min, max);
+    }
+}
+void PrintArray(int[] array)
+{
+    foreach (var element in array)
+    {
+        Console.Write($"{element} ");
+    }
+}
+int quantity_of_numbers (int[] array)
+{
+    int quantity = 0;
+        for(int i =0; i <array.Length;i++)
+        {
+            if (array[i]>=10 && array[i]<=99) quantity++;
+        } 
+    return quantity;
+}
+Console.Write("Enter min number for array:");
+int Min = int.Parse(Console.ReadLine()??"0");
+Console.Write("Enter max number for array:");
+int Max = int.Parse(Console.ReadLine()??"0");
+int[] Array = new int[123];
+FillArray(Array, Min, Max+1);
+PrintArray(Array);
+Console.WriteLine("");
+Console.WriteLine($"quantity of elements in [10,99]: {quantity_of_numbers (Array)}");
