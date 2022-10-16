@@ -1,0 +1,43 @@
+// Задать массив, заполнить случайными положительными трёхзначными числами. Показать количество нечетных\четных чисел
+void FillArray(int[] array)
+{
+    Random random = new Random();
+    for (int i = 0; i < array.Length; i++)
+    {
+        array[i] = new Random().Next (0, 1000);
+    }
+}
+void PrintArray(int[] array)
+{
+    foreach (var element in array)
+    {
+        Console.Write($"{element} ");
+    }
+}
+int quantity_of_numbers (int[] array, int count)
+{
+    int quantity = 0;
+    if (count == 1)
+    {
+        for(int i = 0; i < array.Length; i++)
+        {
+            if (array[i]%2 == 1) quantity++;
+        }        
+    }
+    else if (count == 0)
+    {
+        for(int i =0; i<array.Length;i++)
+        {
+            if (array[i]%2==0) quantity++;
+        } 
+    }
+    return quantity;
+}
+Console.Write("Enter array.Length:");
+int length = int.Parse(Console.ReadLine() ?? "0");
+int[] Array = new int[length];
+FillArray(Array);
+PrintArray(Array);
+Console.WriteLine(" ");
+Console.WriteLine($"quantity of even numbers { quantity_of_numbers (Array, 0)}");
+Console.WriteLine($"quantity of odd numbers {quantity_of_numbers (Array, 1)}");
